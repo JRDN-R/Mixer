@@ -13,36 +13,46 @@ button,.download{font:inherit;border:1px solid #41454e;border-radius:8px;backgro
 .lane{position:relative;overflow:hidden;background-color:#17191e;background-image:linear-gradient(to right,#ffffff11 1px,transparent 1px),linear-gradient(to right,#ffffff06 1px,transparent 1px);background-size:var(--bar-width) 100%,var(--beat-width) 100%;cursor:crosshair}.track-row:nth-child(odd) .lane{background-color:#191b20}.empty-add{position:absolute;left:18px;top:36px;margin:0;color:#98a3b3;background:transparent;border-style:dashed;min-height:42px;font-size:12px}.clip{position:absolute;top:16px;height:90px;min-width:3px;border:1px solid var(--track-color);border-radius:7px;color:var(--track-color);background:#343d35;overflow:hidden;cursor:grab;touch-action:none;user-select:none}.clip.selected{box-shadow:0 0 0 2px var(--track-color)}.clip.inactive{opacity:.32}.clip.dragging{cursor:grabbing;z-index:2}.clip canvas{position:absolute;top:28px;height:44px;pointer-events:none}.clip-label{position:absolute;top:0;left:14px;display:block;width:max-content;max-width:calc(100% - 30px);font-size:11px;font-weight:600;padding:4px 0;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}.clip-info{position:absolute;bottom:4px;left:14px;display:block;width:max-content;max-width:calc(100% - 30px);margin:0;font:10px ui-monospace,SFMono-Regular,monospace;white-space:nowrap;overflow:hidden;pointer-events:none}.trim-handle{position:absolute;top:0;bottom:0;width:12px;border:0;border-radius:0;padding:0;background:#ffffff0c;color:inherit;cursor:ew-resize;min-height:0;touch-action:none}.trim-handle:hover{background:#ffffff2c}.trim-handle:after{content:"";width:2px;height:20px;border-left:1px solid currentColor;border-right:1px solid currentColor}.trim-left{left:0}.trim-right{right:0}.playhead-wrap{position:absolute;inset:0 0 0 var(--sidebar);overflow:hidden;pointer-events:none;z-index:2}.playhead{height:100%;width:1px;background:#e5edee;position:absolute;top:0;will-change:transform}.playhead:before{content:"";position:absolute;left:-4px;top:0;width:9px;height:10px;background:#e5edee;clip-path:polygon(0 0,100% 0,100% 55%,50% 100%,0 55%)}
 .editor{border-color:#454d41}.editor summary{cursor:pointer;display:list-item;font-weight:600;font-size:13px}.editor summary span{color:#b5c891;font-weight:400;margin-left:8px}.editor-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:17px}.field>label{display:block;font-size:12px;color:#b9c1cd;margin-bottom:5px}.field input{width:100%;min-width:0}.field .group{flex-wrap:nowrap;gap:5px}.field .group input{flex:1}.field .group button{flex:none}.field .hint{display:block;font-size:11px;color:#8e99a9;margin-top:5px}.editor-bottom{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.editor-bottom .note{flex:1;min-width:190px}.danger{color:#ffb5a8}.footer{margin-top:22px}.footer .format{color:#9da5b2;font-size:12px}.footer-note{margin-top:12px}#status{margin:14px 0 0;min-height:23px;font-size:13px;color:#c3cad4;overflow-wrap:anywhere}#status.error{color:#ffb0a7}#progress{width:100%;accent-color:var(--accent);height:9px;margin-top:14px}#save-hint{font-size:12px;margin-top:12px}.help{font-size:12px;color:#9ba6b7;margin-top:20px}.help summary{cursor:pointer;width:fit-content}.help p{margin-top:8px;max-width:760px}[hidden]{display:none!important}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:700px){:root{--sidebar:178px}body{padding:20px 10px 30px}.heading{gap:8px}h1{font-size:25px}.badge{display:none}.heading p{font-size:13px}.panel{padding:14px}.arrangement{padding:0}.transport .time{font-size:13px}.transport{gap:7px}.transport button{padding:8px 11px;font-size:13px}.toolbar{gap:12px}.zoom{margin-left:0}.track-controls{padding:10px}.track-top{gap:5px}.track-number{font-size:11px}.file-name{font-size:11px}.track-edit{padding:3px 7px}.toggle{padding:3px 8px}.track-buttons{gap:4px}.editor-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}.arrange-title span{font-size:10px;max-width:160px;text-align:right}.arrange-title{padding:10px 12px}.editor summary span{display:block;margin:3px 0 0 17px}.footer{gap:8px}.footer .format{width:100%}.footer>*:not(.format){flex:1 1 auto}}
+/* One control-panel toggle gives every lane the same extra room. */
+.arrange-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.arrange-title{flex-wrap:wrap}.arrange-title>span{margin-left:auto}.ruler,.lane{grid-column:2}.arrangement-grid.controls-collapsed{--sidebar:0px}.arrangement-scroll{touch-action:pan-x pan-y}.controls-toggle{min-height:42px;white-space:nowrap}.controls-toggle svg{width:16px;height:16px;flex:none}
+/* iOS page gestures stay at 1x; only the waveform timeline handles pinch zoom. */
+html.ios,html.ios body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}html.ios input[type=number],html.ios select{font-size:16px}html.ios button,html.ios a,html.ios summary,html.ios input,html.ios select{touch-action:pan-x pan-y}
+@media(max-width:700px){.arrange-title>span{flex-basis:100%;max-width:none;text-align:left}.controls-toggle{min-height:44px}}
+.project-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}.project-tools button,.project-tools a{font-size:13px}.project-tools .note{margin-left:auto}.magnet[aria-pressed=true],#metronome[aria-pressed=true]{background:#d4f078;color:#19200b;border-color:#d4f078}.snap-guide{position:absolute;top:0;height:100%;width:1px;border-left:1px dashed var(--accent);pointer-events:none}.snap-guide:before{content:"";position:absolute;top:35px;left:-3px;width:5px;height:5px;background:var(--accent)}
+@media(max-width:700px){.project-tools .note{flex-basis:100%;margin-left:0}.project-tools button,.project-tools a{min-height:44px}}
+.playhead{width:28px;left:-14px;background:transparent;pointer-events:auto;cursor:ew-resize;touch-action:none;user-select:none}.playhead:after{content:"";position:absolute;left:14px;top:0;height:100%;width:1px;background:#e5edee;pointer-events:none}.playhead:before{left:8px;width:13px;height:15px}.playhead.scrubbing:after,.playhead.scrubbing:before{background:var(--accent)}.playhead:focus-visible{outline-offset:-2px}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <main>
 <header class="heading"><div><div class="eyebrow">FOUR TRACK MIXER</div><h1>A little room to mix.</h1><p>Drop in your audio. Line it up. Make it yours.</p></div><span class="badge">4 tracks · All on your device</span></header>
+<div class="project-tools" aria-label="Project files"><input id="project-file" type="file" accept=".mixproj,.json,application/json" hidden><button id="open-project">Open project</button><button id="save-project" disabled>Save project</button><a id="download-project" class="download" hidden>Download project</a><button id="share-project" hidden>Save / share project</button><span class="note">Projects include your audio and edits.</span></div>
 <section class="panel" aria-label="Shared playback controls">
   <div class="transport">
     <button id="play" class="primary" disabled>▶ Play</button>
     <button id="restart" disabled aria-label="Return to the beginning">↤ Restart</button>
     <button id="undo" class="small square" disabled aria-label="Undo edit" title="Undo edit (Ctrl/Cmd+Z)">↶</button>
     <button id="redo" class="small square" disabled aria-label="Redo edit" title="Redo edit (Ctrl/Cmd+Shift+Z)">↷</button>
+    <button id="metronome" class="small" aria-pressed="false" title="Metronome follows Project BPM during playback. Excluded from MP3 export.">Click off</button>
     <span class="time"><span id="current">0:00.000</span> / <span id="duration">0:00.000</span></span>
   </div>
   <input id="timeline" class="timeline" type="range" min="0" max="1" value="0" step="0.001" aria-label="Playback position for all tracks" disabled>
   <div class="toolbar">
     <div class="group"><label for="project-bpm">Project BPM</label><input id="project-bpm" type="number" min="20" max="300" step="0.1" value="120"></div>
-    <div class="group"><label for="snap">Snap</label><select id="snap"><option value="0">Off</option><option value="1">Beat</option><option value="0.5">1/2 beat</option><option value="0.25" selected>1/4 beat</option></select></div>
+    <div class="group"><button id="magnet" class="small magnet" aria-pressed="true" title="Snap clip positions and trim handles to the beat grid">Snap on</button><select id="snap" aria-label="Grid snap interval"><option value="0">Off</option><option value="1">Beat</option><option value="0.5">1/2 beat</option><option value="0.25" selected>1/4 beat</option></select></div>
     <div class="group"><label for="nudge-step">Nudge</label><select id="nudge-step"><option value="0.001">1 ms</option><option value="0.01" selected>10 ms</option><option value="0.1">100 ms</option><option value="beat">1 beat</option></select></div>
-    <div class="group zoom"><span class="group-label">Zoom</span><button id="zoom-out" class="small square" aria-label="Zoom out">−</button><button id="zoom-in" class="small square" aria-label="Zoom in">+</button><button id="fit" class="small">Fit</button></div>
+    <div class="group zoom"><span class="group-label">Timeline zoom</span><button id="zoom-out" class="small square" aria-label="Zoom out">−</button><button id="zoom-in" class="small square" aria-label="Zoom in">+</button><button id="fit" class="small">Fit</button></div>
   </div>
-  <p class="note transport-note">Drag a clip to move it. Drag its edges to trim. Click the ruler to listen from anywhere.</p>
+  <p class="note transport-note">Drag clips or their edges to arrange and trim. Drag the white playhead to scrub. Pinch over the waveforms to zoom.</p>
 </section>
 <section class="panel arrangement" aria-label="Four track arrangement">
-  <div class="arrange-title"><strong>Arrangement</strong><span>Seconds above · Bars / beats below · 4/4</span></div>
+  <div class="arrange-title"><div class="arrange-heading"><button id="toggle-controls" class="small controls-toggle" type="button" aria-expanded="true" aria-controls="controls-0 controls-1 controls-2 controls-3"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M7 3v14"/></svg><span id="controls-toggle-label">Hide controls</span></button><strong>Arrangement</strong></div><span>Seconds above · Bars / beats below · 4/4</span></div>
   <div id="arrangement-scroll" class="arrangement-scroll" tabindex="0" aria-label="Scrollable audio timeline">
     <div id="arrangement-grid" class="arrangement-grid">
-      <div class="ruler-row"><div class="corner">TRACKS <span id="loaded-count">0 / 4</span></div><div id="ruler" class="ruler" role="slider" aria-label="Timeline playhead" tabindex="0" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></div></div>
+      <div class="ruler-row"><div id="track-corner" class="corner">TRACKS <span id="loaded-count">0 / 4</span></div><div id="ruler" class="ruler" role="slider" aria-label="Timeline playhead" tabindex="0" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></div></div>
       <div id="tracks"></div>
-      <div class="playhead-wrap"><div id="playhead" class="playhead"></div></div>
+      <div class="playhead-wrap"><div id="snap-guide" class="snap-guide" hidden></div><div id="playhead" class="playhead" role="slider" aria-label="Drag playhead to scrub" tabindex="-1" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" title="Drag to scrub forward or backward. Move slowly for a tape-stop effect."></div></div>
     </div>
   </div>
 </section>
@@ -67,8 +77,8 @@ button,.download{font:inherit;border:1px solid #41454e;border-radius:8px;backgro
 <progress id="progress" max="100" value="0" aria-label="Export progress" hidden></progress>
 <p id="status" role="status" aria-live="polite">Add audio to any of the four tracks to begin.</p>
 <p id="save-hint" hidden>On iPhone, use Save / share MP3 → Save to Files. If the download opens a player, use its Share button.</p>
-<p class="note footer-note">Export follows your positions, trims, speed, volume, mute, and solo settings. Files stay on your device.</p>
-<details class="help"><summary>A few handy shortcuts</summary><p>Select a clip, then use ← / → to nudge. Hold Shift for 10× the nudge. Space plays or pauses. Ctrl/Cmd+Z undoes edits. Hold Alt while dragging to ignore Snap. Trim edits keep your original audio intact; Reset clip restores it. Reloading the page clears this session.</p></details>
+<p class="note footer-note">Export follows your positions, trims, speed, volume, mute, and solo settings. The metronome is for playback only. Files stay on your device.</p>
+<details class="help"><summary>A few handy shortcuts</summary><p>Select a clip, then use ← / → to nudge. Hold Shift for 10× the nudge. Space plays or pauses. Ctrl/Cmd+Z undoes edits. Hold Alt while dragging to ignore Snap. Trim edits keep your original audio intact; Reset clip restores it. Save project includes all four audio files and settings in one .mixproj file. Open project restores them. Save before reloading the page.</p></details>
 </main>
 <!-- The MP3 encoder is embedded below, so this file also works offline. -->
 <script id="mp3-encoder" type="text/plain">function lamejs(){function X(c){return new Int32Array(c)}function K(c){return new Float32Array(c)}function ca(c){if(1==c.length)return K(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(ca(c));return n}function Ia(c){if(1==c.length)return X(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(Ia(c));return n}function dc(c){if(1==c.length)return new Int16Array(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(dc(c));return n}function Ob(c){if(1==c.length)return Array(c[0]);
@@ -383,18 +393,30 @@ a.length>D&&(D=a.length,p=0|1.25*D+7200,r=new Int8Array(p));a=u.lame_encode_buff
 'use strict';
 
 const $ = id => document.getElementById(id);
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+if (isIOS) {
+  document.documentElement.classList.add('ios');
+  document.querySelector('meta[name="viewport"]').content = 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no';
+}
 const COLORS = ['#cde995', '#9fcce8', '#c5afe7', '#e8b99a'];
 const MAX_POSITION = 3600;
 const tracks = Array.from({length: 4}, () => ({
   buffer: null, name: '', volume: 1, muted: false, solo: false,
   start: 0, trimStart: 0, trimEnd: 0, rate: 1, bpm: null,
-  peaks: null, gain: null, source: null, loading: false
+  peaks: null, fileBlob: null, gain: null, source: null, loading: false
 }));
 let ctx = null, playing = false, starting = false, offset = 0, startedAt = 0, total = 0;
 let exporting = false, scrubbing = false, resumeAfterScrub = false, worker = null;
 let downloadURL = null, exportBlob = null, exportFileName = 'four-track-mix.mp3';
 let projectBpm = 120, selected = -1, pixelsPerSecond = 65, viewDuration = 12;
 let fitMode = true, drag = null, visualFrame = 0, undoStack = [], redoStack = [];
+let controlsCollapsed = false, pinch = null, timelineTap = null;
+let projectBusy = false, projectBlob = null, projectURL = null, projectFileName = 'four-track-project.mixproj';
+let lastSnap = '0.25', metronomeEnabled = false, clickTimer = null;
+const clickBuffers = {}, clickNodes = new Set();
+let playheadDrag = null;
+const scrubNodes = new Set();
+const CONTROLS_PREFERENCE = 'four-track-mixer-controls-collapsed';
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const ms = seconds => Number((seconds * 1000).toFixed(3));
 const time = seconds => {
@@ -404,7 +426,7 @@ const time = seconds => {
 const clipDuration = track => track.buffer ? (track.trimEnd - track.trimStart) / track.rate : 0;
 const clipEnd = track => track.start + clipDuration(track);
 const minSourceDuration = track => Math.min(0.01, track.buffer.duration);
-const locked = () => exporting || starting || tracks.some(track => track.loading);
+const locked = () => exporting || projectBusy || starting || tracks.some(track => track.loading);
 function status(message, error = false) {
   $('status').textContent = message;
   $('status').classList.toggle('error', error);
@@ -440,17 +462,29 @@ function clearDownload() {
   $('save-hint').hidden = true;
 }
 function invalidateExport() {
+  clearProjectDownload();
   const hadExport = !!exportBlob;
   clearDownload();
   if (hadExport) status('Mix changed. Export again to download your latest arrangement.');
 }
 function refresh() {
   const busy = locked(), available = tracks.some(t => t.buffer);
+  $('open-project').disabled = busy;
+  $('project-file').disabled = busy;
+  $('save-project').disabled = busy || !available;
+  $('metronome').disabled = busy;
+  $('metronome').setAttribute('aria-pressed', String(metronomeEnabled));
+  $('metronome').textContent = metronomeEnabled ? 'Click on' : 'Click off';
+  $('magnet').disabled = busy;
+  $('snap').disabled = busy;
   ['play', 'restart', 'timeline', 'export'].forEach(id => { $(id).disabled = !available || busy; });
   $('play').textContent = playing ? '❚❚ Pause' : '▶ Play';
   $('duration').textContent = time(total);
   $('timeline').max = total || 1;
   $('ruler').setAttribute('aria-valuemax', String(ms(total)));
+  $('playhead').setAttribute('aria-valuemax', String(ms(total)));
+  $('playhead').setAttribute('aria-disabled', String(!available || busy));
+  $('playhead').tabIndex = !available || busy ? -1 : 0;
   $('ruler').setAttribute('aria-disabled', String(!available || busy));
   $('loaded-count').textContent = tracks.filter(t => t.buffer).length + ' / 4';
   $('undo').disabled = busy || !undoStack.length;
@@ -482,9 +516,13 @@ function updateTime() {
   $('timeline').setAttribute('aria-valuetext', time(p) + ' of ' + time(total));
   $('ruler').setAttribute('aria-valuenow', String(ms(p)));
   $('ruler').setAttribute('aria-valuetext', time(p) + ' of ' + time(total));
+  $('playhead').setAttribute('aria-valuenow', String(ms(p)));
+  $('playhead').setAttribute('aria-valuetext', time(p) + ' of ' + time(total));
   $('playhead').style.transform = 'translateX(' + (p * pixelsPerSecond) + 'px)';
 }
 function stopSources() {
+  stopMetronome();
+  stopScrubAudio();
   tracks.forEach(t => {
     if (t.source) { try { t.source.stop(); } catch {} t.source.disconnect(); t.source = null; }
     if (t.gain) { t.gain.disconnect(); t.gain = null; }
@@ -527,12 +565,13 @@ function schedule() {
     if (nodes) Object.assign(t, nodes);
   });
   playing = true;
+  startMetronome();
   refresh();
   updateTime();
 }
 async function play() {
   if (playing) { pause(); return; }
-  if (locked() || drag || !total) return;
+  if (locked() || drag || pinch || playheadDrag || !total) return;
   starting = true;
   refresh();
   try {
@@ -578,7 +617,7 @@ function recalculate() {
   offset = Math.min(offset, total);
 }
 function commitEdit(change, message, gainOnly = false) {
-  if (locked() || drag) return;
+  if (locked() || drag || pinch || playheadDrag) return;
   const before = snapshot(), wasPlaying = playing;
   if (!gainOnly && wasPlaying) pause();
   change();
@@ -593,7 +632,7 @@ function commitEdit(change, message, gainOnly = false) {
   if (message) status(message);
 }
 function restoreEdit(backward) {
-  if (locked() || drag) return;
+  if (locked() || drag || pinch || playheadDrag) return;
   const from = backward ? undoStack : redoStack, to = backward ? redoStack : undoStack;
   if (!from.length) return;
   const wasPlaying = playing;
@@ -719,13 +758,104 @@ function renderTimeline() {
   updateTime();
 }
 function setZoom(factor) {
-  if (drag) return;
+  if (drag || pinch || playheadDrag) return;
   const scroll = $('arrangement-scroll'), middle = (scroll.scrollLeft + viewportWidth() / 2) / pixelsPerSecond;
   fitMode = false;
   pixelsPerSecond = clamp(pixelsPerSecond * factor, 0.1, 1000);
   renderTimeline();
   scroll.scrollLeft = Math.max(0, middle * pixelsPerSecond - viewportWidth() / 2);
   renderViewport();
+}
+function setControlsCollapsed(collapsed, persist = true) {
+  if (drag || pinch || playheadDrag) return;
+  const scroll = $('arrangement-scroll'), leftTime = scroll.scrollLeft / pixelsPerSecond;
+  controlsCollapsed = collapsed;
+  $('arrangement-grid').classList.toggle('controls-collapsed', collapsed);
+  $('track-corner').hidden = collapsed;
+  tracks.forEach((track, i) => { $('controls-' + i).hidden = collapsed; });
+  $('toggle-controls').setAttribute('aria-expanded', String(!collapsed));
+  $('controls-toggle-label').textContent = collapsed ? 'Show controls' : 'Hide controls';
+  if (persist) { try { localStorage.setItem(CONTROLS_PREFERENCE, String(collapsed)); } catch {} }
+  renderTimeline();
+  if (!fitMode) scroll.scrollLeft = leftTime * pixelsPerSecond;
+  renderViewport();
+}
+function seekTimelinePointer(event, element) {
+  if (event.button !== 0 || locked() || pinch || !total) return;
+  // A touch becomes a seek only on release, after ruling out a scroll or pinch.
+  if (event.pointerType === 'touch') {
+    timelineTap = {id: event.pointerId, element, x: event.clientX, y: event.clientY};
+    return;
+  }
+  event.preventDefault();
+  seek((event.clientX - element.getBoundingClientRect().left) / pixelsPerSecond);
+}
+function beginPinch(event) {
+  if (event.touches.length < 2) return;
+  const touches = Array.from(event.touches);
+  const scroll = $('arrangement-scroll'), rect = scroll.getBoundingClientRect();
+  const onTimeline = touches.length === 2 && !locked() && touches.every(touch =>
+    touch.target instanceof Element && touch.target.closest('.lane, #ruler, #playhead') && scroll.contains(touch.target) &&
+    touch.clientX >= rect.left + sidebarWidth() && touch.clientX <= rect.right);
+  if (!isIOS && !onTimeline && !pinch) return;
+  if (event.cancelable) event.preventDefault();
+  timelineTap = null;
+  if (pinch) return;
+  let resume = false;
+  // A second finger turns a tentative clip drag into a view-only gesture.
+  if (drag) { resume = drag.resume; drag.resume = false; finishDrag(null, true); }
+  if (playheadDrag) { resume = playheadDrag.resume; finishPlayheadDrag(null, true, false); }
+  const [a, b] = touches;
+  pinch = {
+    timeline: onTimeline, ids: [a.identifier, b.identifier], resume,
+    distance: Math.max(1, Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY)),
+    scale: pixelsPerSecond,
+    anchorTime: (scroll.scrollLeft + (a.clientX + b.clientX) / 2 - rect.left - sidebarWidth()) / pixelsPerSecond
+  };
+}
+function movePinch(event) {
+  if (!pinch) { if (isIOS && event.touches.length > 1 && event.cancelable) event.preventDefault(); return; }
+  if (event.cancelable) event.preventDefault();
+  if (!pinch.timeline || event.touches.length !== 2) return;
+  const touches = Array.from(event.touches);
+  const [a, b] = pinch.ids.map(id => touches.find(touch => touch.identifier === id));
+  if (!a || !b) return;
+  const distance = Math.max(1, Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY));
+  const scroll = $('arrangement-scroll');
+  fitMode = false;
+  pixelsPerSecond = clamp(pinch.scale * distance / pinch.distance, 0.1, 1000);
+  renderTimeline();
+  const midpoint = (a.clientX + b.clientX) / 2 - scroll.getBoundingClientRect().left - sidebarWidth();
+  scroll.scrollLeft = Math.max(0, pinch.anchorTime * pixelsPerSecond - midpoint);
+  renderViewport();
+}
+function finishPinch(event) {
+  if (!pinch) return;
+  if (event.cancelable) event.preventDefault();
+  // Wait for every finger to lift so a pinch cannot turn into a stray clip edit.
+  if (event.touches.length) return;
+  const resume = pinch.resume;
+  pinch = null;
+  timelineTap = null;
+  if (resume && !document.hidden && offset < total) play();
+}
+document.addEventListener('touchstart', beginPinch, {passive: false, capture: true});
+document.addEventListener('touchmove', movePinch, {passive: false, capture: true});
+document.addEventListener('touchend', finishPinch, {passive: false, capture: true});
+document.addEventListener('touchcancel', finishPinch, {passive: false, capture: true});
+document.addEventListener('pointerup', event => {
+  if (!timelineTap || timelineTap.id !== event.pointerId) return;
+  const tap = timelineTap;
+  timelineTap = null;
+  if (pinch || locked() || Math.hypot(event.clientX - tap.x, event.clientY - tap.y) > 8) return;
+  seek((event.clientX - tap.element.getBoundingClientRect().left) / pixelsPerSecond);
+});
+document.addEventListener('pointercancel', () => { timelineTap = null; });
+if (isIOS) {
+  // Safari also emits its own page-zoom gestures; Touch Events above handle ours.
+  for (const name of ['gesturestart', 'gesturechange', 'gestureend', 'dblclick']) {
+    document.addEventListener(name, event => { if (event.cancelable) event.preventDefault(); }, {passive: false, capture: true});
+  }
 }
 function selectTrack(i, open = true) {
   if (!tracks[i].buffer) return;
@@ -763,7 +893,7 @@ function snapTime(value, ignoreSnap = false) {
   return step ? Math.round(value / step) * step : Math.round(value * 1000) / 1000;
 }
 function startDrag(event, i) {
-  if (event.button !== 0 || locked() || drag) return;
+  if (event.button !== 0 || locked() || drag || pinch || playheadDrag) return;
   event.preventDefault();
   selectTrack(i);
   const track = tracks[i], element = $('clip-' + i);
@@ -806,12 +936,15 @@ function moveDrag(event) {
   recalculate();
   if (clipEnd(t) > viewDuration - 0.5) viewDuration = clipEnd(t) + Math.max(2, viewportWidth() / pixelsPerSecond * 0.2);
   renderTimeline();
+  $('snap-guide').hidden = $('snap').value === '0' || event.altKey;
+  $('snap-guide').style.transform = 'translateX(' + ((d.kind === 'right' ? clipEnd(t) : t.start) * pixelsPerSecond) + 'px)';
   renderEditor();
   refresh();
 }
 function finishDrag(event, cancelled = false) {
   if (!drag || (event && event.pointerId !== undefined && event.pointerId !== drag.pointerId)) return;
   const d = drag;
+  $('snap-guide').hidden = true;
   drag = null;
   d.element.classList.remove('dragging');
   if (d.element.hasPointerCapture(d.pointerId)) d.element.releasePointerCapture(d.pointerId);
@@ -832,13 +965,13 @@ tracks.forEach((track, i) => {
   row.className = 'track-row';
   row.id = 'row-' + i;
   row.style.setProperty('--track-color', COLORS[i]);
-  row.innerHTML = `<div class="track-controls">
+  row.innerHTML = `<div class="track-controls" id="controls-${i}">
     <div class="track-top"><span class="track-number">0${i + 1}</span><span id="name-${i}" class="file-name">Track ${i + 1}</span>
     <input id="file-${i}" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac,.aif,.aiff" hidden>
     <button class="upload" id="upload-${i}" aria-label="Add or replace audio for track ${i + 1}">+ Add</button></div>
     <div class="track-buttons"><button id="mute-${i}" class="toggle mute" aria-label="Mute track ${i + 1}" aria-pressed="false" disabled>Mute</button><button id="solo-${i}" class="toggle" aria-label="Solo track ${i + 1}" aria-pressed="false" disabled>Solo</button><button id="edit-${i}" class="toggle track-edit" aria-label="Edit track ${i + 1}" disabled>Edit</button></div>
     <div class="volume-box"><label for="volume-${i}">VOL</label><input class="volume" id="volume-${i}" type="range" min="0" max="100" value="100" step="1" aria-label="Track ${i + 1} volume" disabled><output class="level" id="level-${i}">100%</output></div></div>
-    <div class="lane" id="lane-${i}"><button id="add-${i}" class="empty-add" aria-label="Add audio to empty track ${i + 1}">+ Add audio</button>
+    <div class="lane" id="lane-${i}"><button id="add-${i}" class="empty-add" aria-label="Add audio to empty track ${i + 1}">+ Add audio · Track ${i + 1}</button>
     <div id="clip-${i}" class="clip" role="group" aria-roledescription="audio clip" tabindex="0" hidden><canvas id="wave-${i}" aria-hidden="true"></canvas><span class="clip-label" id="clip-name-${i}"></span><span class="clip-info" id="clip-info-${i}"></span><button class="trim-handle trim-left" data-trim="left" aria-label="Trim start of track ${i + 1}"></button><button class="trim-handle trim-right" data-trim="right" aria-label="Trim end of track ${i + 1}"></button></div></div>`;
   $('tracks').append(row);
   $('upload-' + i).onclick = $('add-' + i).onclick = () => $('file-' + i).click();
@@ -867,8 +1000,8 @@ tracks.forEach((track, i) => {
     loadFile(i, event.dataTransfer.files[0]);
   });
   $('lane-' + i).addEventListener('pointerdown', event => {
-    if (event.target !== $('lane-' + i) || locked() || !total) return;
-    seek(clamp((event.clientX - $('lane-' + i).getBoundingClientRect().left) / pixelsPerSecond, 0, total));
+    if (event.target !== $('lane-' + i)) return;
+    seekTimelinePointer(event, $('lane-' + i));
   });
   $('clip-' + i).addEventListener('pointerdown', event => startDrag(event, i));
   $('clip-' + i).addEventListener('pointermove', moveDrag);
@@ -894,21 +1027,23 @@ tracks.forEach((track, i) => {
   });
 });
 async function loadFile(i, file, input) {
-  if (!file || locked() || drag) return;
+  if (!file || locked() || drag || pinch || playheadDrag) return;
   const track = tracks[i];
   if (playing) pause();
   track.loading = true;
   refresh();
   status('Loading ' + file.name + '…');
   try {
-    const buffer = await audioContext().decodeAudioData(await file.arrayBuffer());
+    const bytes = await file.arrayBuffer();
+    const fileBlob = new Blob([bytes], {type: file.type || 'application/octet-stream'});
+    const buffer = await audioContext().decodeAudioData(bytes);
     if (!buffer.length) throw Error('The audio file is empty.');
     const peaks = makePeaks(buffer);
-    Object.assign(track, {buffer, peaks, name: file.name, start: 0, trimStart: 0, trimEnd: buffer.duration, rate: 1, bpm: null, muted: false, solo: false});
+    Object.assign(track, {buffer, peaks, fileBlob, name: file.name, start: 0, trimStart: 0, trimEnd: buffer.duration, rate: 1, bpm: null, muted: false, solo: false});
     // History contains only edits to the currently loaded files, never stale audio.
     undoStack = []; redoStack = [];
     recalculate();
-    clearDownload();
+    clearDownload(); clearProjectDownload();
     selectTrack(i);
     renderTimeline();
     status(tracks.filter(t => t.buffer).length + ' of 4 tracks loaded. Drag a clip or use its settings to line it up.');
@@ -956,9 +1091,9 @@ $('reset-clip').onclick = () => {
   commitEdit(() => { track.start = 0; track.trimStart = 0; track.trimEnd = track.buffer.duration; track.rate = 1; }, 'Clip position, trims, and speed reset.');
 };
 $('remove-clip').onclick = () => {
-  if (locked() || drag || selected < 0) return;
+  if (locked() || drag || pinch || playheadDrag || selected < 0) return;
   if (playing) pause();
-  Object.assign(tracks[selected], {buffer: null, peaks: null, name: '', start: 0, trimStart: 0, trimEnd: 0, rate: 1, bpm: null, volume: 1, solo: false, muted: false});
+  Object.assign(tracks[selected], {buffer: null, peaks: null, fileBlob: null, name: '', start: 0, trimStart: 0, trimEnd: 0, rate: 1, bpm: null, volume: 1, solo: false, muted: false});
   undoStack = []; redoStack = [];
   selected = tracks.findIndex(t => t.buffer);
   recalculate();
@@ -974,9 +1109,10 @@ $('play').onclick = play;
 $('restart').onclick = () => seek(0);
 $('undo').onclick = () => restoreEdit(true);
 $('redo').onclick = () => restoreEdit(false);
+$('toggle-controls').onclick = () => setControlsCollapsed(!controlsCollapsed);
 $('zoom-in').onclick = () => setZoom(1.5);
 $('zoom-out').onclick = () => setZoom(1 / 1.5);
-$('fit').onclick = () => { if (drag) return; fitMode = true; $('arrangement-scroll').scrollLeft = 0; renderTimeline(); };
+$('fit').onclick = () => { if (drag || pinch || playheadDrag) return; fitMode = true; $('arrangement-scroll').scrollLeft = 0; renderTimeline(); };
 $('arrangement-scroll').addEventListener('scroll', queueViewport, {passive: true});
 window.addEventListener('resize', () => { renderTimeline(); });
 $('timeline').addEventListener('pointerdown', () => {
@@ -996,11 +1132,7 @@ function finishScrub() {
 window.addEventListener('pointerup', finishScrub);
 window.addEventListener('pointercancel', finishScrub);
 $('timeline').addEventListener('change', finishScrub);
-$('ruler').addEventListener('pointerdown', event => {
-  if (locked() || !total || event.button !== 0) return;
-  event.preventDefault();
-  seek((event.clientX - $('ruler').getBoundingClientRect().left) / pixelsPerSecond);
-});
+$('ruler').addEventListener('pointerdown', event => seekTimelinePointer(event, $('ruler')));
 $('ruler').addEventListener('keydown', event => {
   if (locked() || !total || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
   event.preventDefault();
@@ -1009,6 +1141,7 @@ $('ruler').addEventListener('keydown', event => {
   else seek(position() + (event.key === 'ArrowLeft' ? -1 : 1) * nudgeAmount(event.shiftKey ? 10 : 1));
 });
 document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && playheadDrag) { finishPlayheadDrag(null, true); return; }
   if (event.key === 'Escape' && drag) { finishDrag(null, true); return; }
   if (event.target.closest('input,select,textarea') || event.target.isContentEditable) return;
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
@@ -1025,6 +1158,315 @@ function tick() {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+
+function updateSnapButton() {
+  const enabled = $('snap').value !== '0';
+  $('magnet').setAttribute('aria-pressed', String(enabled));
+  $('magnet').textContent = enabled ? 'Snap on' : 'Snap off';
+  if (enabled) lastSnap = $('snap').value;
+}
+$('magnet').onclick = () => {
+  if (drag || pinch || playheadDrag || locked()) return;
+  $('snap').value = $('snap').value === '0' ? lastSnap : '0';
+  updateSnapButton();
+  clearProjectDownload();
+};
+$('snap').addEventListener('change', () => { updateSnapButton(); clearProjectDownload(); });
+
+function clickBuffer(accent) {
+  const key = accent ? 'accent' : 'beat';
+  if (clickBuffers[key]) return clickBuffers[key];
+  const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 0.035), ctx.sampleRate);
+  const samples = buffer.getChannelData(0), frequency = accent ? 1760 : 1174.66;
+  for (let i = 0; i < samples.length; i++) {
+    samples[i] = Math.sin(2 * Math.PI * frequency * i / ctx.sampleRate) * Math.pow(1 - i / samples.length, 4) * (accent ? 0.32 : 0.22);
+  }
+  clickBuffers[key] = buffer;
+  return buffer;
+}
+function stopMetronome() {
+  if (clickTimer !== null) { clearInterval(clickTimer); clickTimer = null; }
+  for (const source of clickNodes) {
+    try { source.stop(); } catch {}
+    source.disconnect();
+  }
+  clickNodes.clear();
+}
+function startMetronome() {
+  stopMetronome();
+  if (!metronomeEnabled || !playing || !ctx || !total) return;
+  const beatDuration = 60 / projectBpm;
+  let beat = Math.ceil((position() - 0.000001) / beatDuration);
+  const scheduleClicks = () => {
+    if (!playing || !metronomeEnabled) { stopMetronome(); return; }
+    beat = Math.max(beat, Math.ceil((position() - 0.000001) / beatDuration));
+    while (beat * beatDuration < total) {
+      const when = startedAt + beat * beatDuration - offset;
+      if (when > ctx.currentTime + 0.15) break;
+      if (when >= ctx.currentTime - 0.003) {
+        const source = ctx.createBufferSource();
+        source.buffer = clickBuffer(beat % 4 === 0);
+        source.connect(ctx.destination);
+        clickNodes.add(source);
+        source.onended = () => { clickNodes.delete(source); source.disconnect(); };
+        source.start(Math.max(ctx.currentTime, when));
+      }
+      beat++;
+    }
+  };
+  scheduleClicks();
+  clickTimer = setInterval(scheduleClicks, 25);
+}
+$('metronome').onclick = () => {
+  if (locked() || drag || pinch || playheadDrag) return;
+  metronomeEnabled = !metronomeEnabled;
+  clearProjectDownload();
+  if (playing) startMetronome();
+  refresh();
+};
+
+function clearProjectDownload() {
+  if (projectURL) URL.revokeObjectURL(projectURL);
+  projectURL = null;
+  projectBlob = null;
+  $('download-project').hidden = true;
+  $('download-project').removeAttribute('href');
+  $('share-project').hidden = true;
+}
+async function encodeProjectAudio(blob) {
+  const bytes = new Uint8Array(await blob.arrayBuffer()), chunks = [];
+  // Encode aligned chunks without spreading a whole song onto the call stack.
+  for (let i = 0; i < bytes.length; i += 49152) {
+    chunks.push(btoa(String.fromCharCode(...bytes.subarray(i, i + 49152))));
+    if (i && i % (49152 * 64) === 0) await new Promise(resolve => setTimeout(resolve, 0));
+  }
+  return chunks.join('');
+}
+async function saveProject() {
+  if (locked() || drag || pinch || playheadDrag || !tracks.some(t => t.buffer)) return;
+  if (playing) pause();
+  projectBusy = true;
+  clearProjectDownload();
+  refresh();
+  try {
+    const savedTracks = [];
+    for (let i = 0; i < tracks.length; i++) {
+      const track = tracks[i];
+      status('Saving project audio… Track ' + (i + 1) + ' of 4');
+      const saved = Object.fromEntries(editKeys.map(key => [key, track[key]]));
+      saved.name = track.name;
+      saved.audio = null;
+      if (track.buffer) {
+        if (!track.fileBlob) throw Error('The original audio for track ' + (i + 1) + ' is unavailable.');
+        saved.audio = {type: track.fileBlob.type, base64: await encodeProjectAudio(track.fileBlob)};
+      }
+      savedTracks.push(saved);
+    }
+    const project = {format: 'four-track-mixer', version: 1, bpm: projectBpm, snap: $('snap').value, metronome: metronomeEnabled, tracks: savedTracks};
+    projectBlob = new Blob([JSON.stringify(project)], {type: 'application/json'});
+    projectURL = URL.createObjectURL(projectBlob);
+    $('download-project').href = projectURL;
+    $('download-project').download = projectFileName;
+    $('download-project').hidden = false;
+    const file = new File([projectBlob], projectFileName, {type: 'application/json'});
+    $('share-project').hidden = !(navigator.canShare && navigator.canShare({files: [file]}));
+    $('download-project').click();
+    status('Project ready with all audio and settings. On iPhone, Save / share project lets you save it to Files.');
+  } catch (error) {
+    clearProjectDownload();
+    status('Could not save the project. ' + error.message, true);
+  } finally { projectBusy = false; refresh(); }
+}
+function validateProject(project) {
+  if (!project || project.format !== 'four-track-mixer' || project.version !== 1 || !Array.isArray(project.tracks) || project.tracks.length !== 4) {
+    throw Error('Choose a Four Track Mixer project (.mixproj).');
+  }
+  const number = (value, min, max, label) => {
+    if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max) throw Error('Invalid project ' + label + '.');
+    return value;
+  };
+  number(project.bpm, 20, 300, 'BPM');
+  if (!['0', '1', '0.5', '0.25'].includes(project.snap) || typeof project.metronome !== 'boolean') throw Error('Invalid project grid or metronome settings.');
+  return project.tracks.map(track => {
+    if (!track || typeof track.name !== 'string' || track.name.length > 4096 || typeof track.muted !== 'boolean' || typeof track.solo !== 'boolean') throw Error('Invalid project track.');
+    const saved = {name: track.name, muted: track.muted, solo: track.solo,
+      start: number(track.start, 0, MAX_POSITION, 'position'),
+      trimStart: number(track.trimStart, 0, Number.MAX_SAFE_INTEGER, 'start trim'),
+      trimEnd: number(track.trimEnd, 0, Number.MAX_SAFE_INTEGER, 'end trim'),
+      volume: number(track.volume, 0, 1, 'volume'), rate: number(track.rate, 0.25, 4, 'speed'),
+      bpm: track.bpm === null ? null : number(track.bpm, 20, 300, 'clip BPM'), audio: track.audio};
+    if (saved.audio !== null) {
+      if (!saved.audio || typeof saved.audio.base64 !== 'string' || !saved.audio.base64.length || saved.audio.base64.length % 4 || !/^[A-Za-z0-9+/]*={0,2}$/.test(saved.audio.base64) || typeof saved.audio.type !== 'string' || saved.audio.type.length > 256 || saved.trimEnd <= saved.trimStart) {
+        throw Error('Invalid project audio or trims.');
+      }
+    }
+    return saved;
+  });
+}
+async function openProject(file) {
+  if (!file || locked() || drag || pinch || playheadDrag) return;
+  if (playing) pause();
+  projectBusy = true;
+  refresh();
+  status('Opening project…');
+  try {
+    const project = JSON.parse(await file.text());
+    const savedTracks = validateProject(project), loaded = [];
+    // Decode and validate everything before replacing the current arrangement.
+    for (let i = 0; i < savedTracks.length; i++) {
+      const {audio, ...settings} = savedTracks[i];
+      let buffer = null, peaks = null, fileBlob = null;
+      if (audio !== null) {
+        status('Opening project audio… Track ' + (i + 1) + ' of 4');
+        const binary = atob(audio.base64), bytes = new Uint8Array(binary.length);
+        for (let j = 0; j < binary.length; j++) bytes[j] = binary.charCodeAt(j);
+        fileBlob = new Blob([bytes], {type: audio.type});
+        buffer = await audioContext().decodeAudioData(bytes.buffer);
+        if (!buffer.length || settings.trimEnd > buffer.duration + 0.01 || settings.trimStart >= buffer.duration) throw Error('Track ' + (i + 1) + ' has trims outside its audio.');
+        settings.trimEnd = Math.min(settings.trimEnd, buffer.duration);
+        if (settings.trimEnd <= settings.trimStart) throw Error('Track ' + (i + 1) + ' is empty after trimming.');
+        peaks = makePeaks(buffer);
+      }
+      loaded.push({...settings, buffer, peaks, fileBlob, gain: null, source: null, loading: false});
+    }
+    stopSources();
+    loaded.forEach((track, i) => Object.assign(tracks[i], track));
+    projectBpm = project.bpm;
+    $('project-bpm').value = projectBpm;
+    $('snap').value = project.snap;
+    updateSnapButton();
+    metronomeEnabled = project.metronome;
+    undoStack = []; redoStack = [];
+    offset = 0;
+    selected = tracks.findIndex(track => track.buffer);
+    fitMode = true;
+    $('arrangement-scroll').scrollLeft = 0;
+    recalculate();
+    clearDownload(); clearProjectDownload();
+    projectFileName = file.name.replace(/\.[^.]+$/, '') + '.mixproj';
+    renderTimeline(); renderEditor();
+    status('Project opened. Audio, clip edits, BPM, and track settings restored.');
+  } catch (error) {
+    status('Could not open the project. ' + error.message + ' Your current arrangement is still loaded.', true);
+  } finally { projectBusy = false; refresh(); }
+}
+$('save-project').onclick = saveProject;
+$('open-project').onclick = () => $('project-file').click();
+$('project-file').addEventListener('change', async event => { await openProject(event.target.files[0]); event.target.value = ''; });
+$('share-project').onclick = async () => {
+  if (!projectBlob) return;
+  try { await navigator.share({files: [new File([projectBlob], projectFileName, {type: 'application/json'})]}); }
+  catch (error) { if (error.name !== 'AbortError') status('Use Download project to save the file.', true); }
+};
+updateSnapButton();
+
+function stopScrubAudio() {
+  for (const node of scrubNodes) {
+    const now = ctx.currentTime;
+    try {
+      node.source.playbackRate.setTargetAtTime(0.05, now, 0.012);
+      node.gain.gain.cancelScheduledValues(now);
+      node.gain.gain.setTargetAtTime(0, now, 0.008);
+      node.source.stop(now + 0.035);
+    } catch { node.source.disconnect(); node.gain.disconnect(); }
+  }
+  scrubNodes.clear();
+}
+function auditionScrub(at, velocity) {
+  if (!ctx || ctx.state !== 'running' || Math.abs(velocity) < 0.03) return;
+  const reverse = velocity < 0, speed = clamp(Math.abs(velocity), 0.05, 8);
+  const when = ctx.currentTime + 0.003;
+  tracks.forEach(track => {
+    if (!audible(track) || !track.volume || at < track.start || at >= clipEnd(track)) return;
+    const sourcePosition = track.trimStart + (at - track.start) * track.rate;
+    const rate = speed * track.rate;
+    const available = reverse ? sourcePosition - track.trimStart : track.trimEnd - sourcePosition;
+    const sourceDuration = Math.min(0.075 * rate, available);
+    if (sourceDuration * track.buffer.sampleRate < 4) return;
+    const source = ctx.createBufferSource(), gain = ctx.createGain();
+    const duration = sourceDuration / rate;
+    source.playbackRate.value = rate;
+    if (reverse) {
+      // Reverse only this short grain, not an entire song in memory.
+      const length = Math.max(1, Math.floor(sourceDuration * track.buffer.sampleRate));
+      const grain = ctx.createBuffer(Math.min(2, track.buffer.numberOfChannels), length, track.buffer.sampleRate);
+      const first = Math.min(track.buffer.length - 1, Math.floor(sourcePosition * track.buffer.sampleRate) - 1);
+      for (let channel = 0; channel < grain.numberOfChannels; channel++) {
+        const input = track.buffer.getChannelData(channel), output = grain.getChannelData(channel);
+        for (let i = 0; i < length; i++) output[i] = input[Math.max(0, first - i)];
+      }
+      source.buffer = grain;
+    } else source.buffer = track.buffer;
+    const level = track.volume * 0.45, fade = Math.min(0.008, duration / 3);
+    gain.gain.setValueAtTime(0, when);
+    gain.gain.linearRampToValueAtTime(level, when + fade);
+    gain.gain.setValueAtTime(level, when + duration - fade);
+    gain.gain.linearRampToValueAtTime(0, when + duration);
+    source.connect(gain);
+    gain.connect(ctx.destination);
+    const node = {source, gain};
+    scrubNodes.add(node);
+    source.onended = () => { scrubNodes.delete(node); source.disconnect(); gain.disconnect(); };
+    source.start(when, reverse ? 0 : sourcePosition, sourceDuration);
+    source.stop(when + duration);
+  });
+}
+function beginPlayheadDrag(event) {
+  if (event.button !== 0 || locked() || drag || pinch || playheadDrag || !total) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const resume = playing, start = position(), element = $('playhead');
+  if (playing) pause();
+  const scroll = $('arrangement-scroll');
+  const lineX = scroll.getBoundingClientRect().left + sidebarWidth() + start * pixelsPerSecond - scroll.scrollLeft;
+  playheadDrag = {id: event.pointerId, start, resume, grabOffset: event.clientX - lineX,
+    audioAt: start, audioTime: performance.now() / 1000, direction: 0};
+  element.setPointerCapture(event.pointerId);
+  element.classList.add('scrubbing');
+  element.focus({preventScroll: true});
+  audioContext().resume().catch(error => status('Could not start scrubbing audio. ' + error.message, true));
+}
+function movePlayheadDrag(event) {
+  if (!playheadDrag || event.pointerId !== playheadDrag.id) return;
+  event.preventDefault();
+  const scroll = $('arrangement-scroll'), rect = scroll.getBoundingClientRect(), d = playheadDrag;
+  if (event.clientX > rect.right - 24) scroll.scrollLeft += 12;
+  else if (event.clientX < rect.left + sidebarWidth() + 24) scroll.scrollLeft -= 12;
+  const value = clamp((event.clientX - rect.left - sidebarWidth() + scroll.scrollLeft - d.grabOffset) / pixelsPerSecond, 0, total);
+  seek(value);
+  const now = performance.now() / 1000, elapsed = now - d.audioTime;
+  if (elapsed >= 0.025) {
+    const velocity = (value - d.audioAt) / elapsed, direction = Math.sign(velocity);
+    if (direction && d.direction && direction !== d.direction) stopScrubAudio();
+    auditionScrub(value, velocity);
+    d.audioAt = value;
+    d.audioTime = now;
+    d.direction = direction;
+  }
+}
+function finishPlayheadDrag(event, cancelled = false, resumePlayback = true) {
+  if (!playheadDrag || (event && event.pointerId !== undefined && event.pointerId !== playheadDrag.id)) return;
+  const d = playheadDrag;
+  playheadDrag = null;
+  const element = $('playhead');
+  if (element.hasPointerCapture(d.id)) element.releasePointerCapture(d.id);
+  element.classList.remove('scrubbing');
+  stopScrubAudio();
+  if (cancelled) seek(d.start);
+  if (d.resume && resumePlayback && !document.hidden && offset < total) play();
+}
+$('playhead').addEventListener('pointerdown', beginPlayheadDrag);
+$('playhead').addEventListener('pointermove', movePlayheadDrag);
+$('playhead').addEventListener('pointerup', event => finishPlayheadDrag(event));
+$('playhead').addEventListener('pointercancel', event => finishPlayheadDrag(event, true));
+$('playhead').addEventListener('lostpointercapture', event => finishPlayheadDrag(event, true));
+$('playhead').addEventListener('keydown', event => {
+  if (locked() || !total || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+  event.preventDefault();
+  if (event.key === 'Home') seek(0);
+  else if (event.key === 'End') seek(total);
+  else seek(position() + (event.key === 'ArrowLeft' ? -1 : 1) * nudgeAmount(event.shiftKey ? 10 : 1));
+});
 
 function encodeWorker() {
   self.onmessage = event => {
@@ -1073,7 +1515,7 @@ function encode(buffer) {
   });
 }
 $('export').onclick = async () => {
-  if (locked() || drag || !total) return;
+  if (locked() || drag || pinch || playheadDrag || !total) return;
   if (playing) pause();
   exporting = true;
   clearDownload();
@@ -1113,12 +1555,17 @@ $('share').onclick = async () => {
   catch (error) { if (error.name !== 'AbortError') status('Use Download MP3 to save the file.', true); }
 };
 window.addEventListener('pagehide', () => {
+  pinch = null; timelineTap = null;
+  if (playheadDrag) finishPlayheadDrag(null, true, false);
+  stopScrubAudio();
   if (drag) { drag.resume = false; finishDrag(null, true); }
   if (playing) pause();
   resumeAfterScrub = false;
 });
 refresh();
-renderTimeline();
+let savedControlsCollapsed = false;
+try { savedControlsCollapsed = localStorage.getItem(CONTROLS_PREFERENCE) === 'true'; } catch {}
+setControlsCollapsed(savedControlsCollapsed, false);
 
 </script>
 <!-- MP3 encoder: lamejs 1.2.1, Dmitry Zhukov / LAME.
@@ -1140,3 +1587,4 @@ way to do this is to:
  -->
 </body>
 </html>
+
