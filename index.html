@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Four Track Mixer</title>
-<meta name="description" content="Arrange, trim, and mix four audio tracks on a simple timeline. Export one MP3, entirely on your device.">
+<title>12 Track Mixer</title>
+<meta name="description" content="Arrange, trim, and mix up to 12 audio tracks on a simple timeline. Export one MP3, entirely on your device.">
 <style>
 :root{color-scheme:dark;font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#101114;color:#f2f3f5;--line:#32353d;--accent:#d4f078;--sidebar:230px;--lane-width:800px;--beat-width:40px;--bar-width:160px}
 *{box-sizing:border-box}body{margin:0;padding:28px 18px 40px}main{max-width:1180px;margin:auto}h1{font-size:28px;letter-spacing:-1px;margin:0 0 4px}p{margin:0;color:#a9afb9}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:8px}.heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}.badge{border:1px solid var(--line);border-radius:24px;padding:6px 12px;font-size:12px;color:#bac1cd;white-space:nowrap}
@@ -26,7 +26,7 @@ html.ios,html.ios body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}ht
 </head>
 <body>
 <main>
-<header class="heading"><div><div class="eyebrow">FOUR TRACK MIXER</div><h1>A little room to mix.</h1><p>Drop in your audio. Line it up. Make it yours.</p></div><span class="badge">4 tracks · All on your device</span></header>
+<header class="heading"><div><div class="eyebrow">12 TRACK MIXER</div><h1>A little room to mix.</h1><p>Drop in your audio. Line it up. Make it yours.</p></div><span class="badge">12 tracks · All on your device</span></header>
 <div class="project-tools" aria-label="Project files"><input id="project-file" type="file" accept=".mixproj,.json,application/json" hidden><button id="open-project">Open project</button><button id="save-project" disabled>Save project</button><a id="download-project" class="download" hidden>Download project</a><button id="share-project" hidden>Save / share project</button><span class="note">Projects include your audio and edits.</span></div>
 <section class="panel" aria-label="Shared playback controls">
   <div class="transport">
@@ -46,11 +46,11 @@ html.ios,html.ios body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}ht
   </div>
   <p class="note transport-note">Drag clips or their edges to arrange and trim. Drag the white playhead to scrub. Pinch over the waveforms to zoom.</p>
 </section>
-<section class="panel arrangement" aria-label="Four track arrangement">
-  <div class="arrange-title"><div class="arrange-heading"><button id="toggle-controls" class="small controls-toggle" type="button" aria-expanded="true" aria-controls="controls-0 controls-1 controls-2 controls-3"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M7 3v14"/></svg><span id="controls-toggle-label">Hide controls</span></button><strong>Arrangement</strong></div><span>Seconds above · Bars / beats below · 4/4</span></div>
+<section class="panel arrangement" aria-label="12 track arrangement">
+  <div class="arrange-title"><div class="arrange-heading"><button id="toggle-controls" class="small controls-toggle" type="button" aria-expanded="true" aria-controls="controls-0 controls-1 controls-2 controls-3 controls-4 controls-5 controls-6 controls-7 controls-8 controls-9 controls-10 controls-11"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M7 3v14"/></svg><span id="controls-toggle-label">Hide controls</span></button><strong>Arrangement</strong></div><span>Seconds above · Bars / beats below · 4/4</span></div>
   <div id="arrangement-scroll" class="arrangement-scroll" tabindex="0" aria-label="Scrollable audio timeline">
     <div id="arrangement-grid" class="arrangement-grid">
-      <div class="ruler-row"><div id="track-corner" class="corner">TRACKS <span id="loaded-count">0 / 4</span></div><div id="ruler" class="ruler" role="slider" aria-label="Timeline playhead" tabindex="0" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></div></div>
+      <div class="ruler-row"><div id="track-corner" class="corner">TRACKS <span id="loaded-count">0 / 12</span></div><div id="ruler" class="ruler" role="slider" aria-label="Timeline playhead" tabindex="0" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></div></div>
       <div id="tracks"></div>
       <div class="playhead-wrap"><div id="snap-guide" class="snap-guide" hidden></div><div id="playhead" class="playhead" role="slider" aria-label="Drag playhead to scrub" tabindex="-1" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" title="Drag to scrub forward or backward. Move slowly for a tape-stop effect."></div></div>
     </div>
@@ -75,10 +75,10 @@ html.ios,html.ios body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}ht
   <span class="format">Stereo · 320 kbps · Full arrangement</span>
 </div>
 <progress id="progress" max="100" value="0" aria-label="Export progress" hidden></progress>
-<p id="status" role="status" aria-live="polite">Add audio to any of the four tracks to begin.</p>
+<p id="status" role="status" aria-live="polite">Add audio to any of the 12 tracks to begin.</p>
 <p id="save-hint" hidden>On iPhone, use Save / share MP3 → Save to Files. If the download opens a player, use its Share button.</p>
 <p class="note footer-note">Export follows your positions, trims, speed, volume, mute, and solo settings. The metronome is for playback only. Files stay on your device.</p>
-<details class="help"><summary>A few handy shortcuts</summary><p>Select a clip, then use ← / → to nudge. Hold Shift for 10× the nudge. Space plays or pauses. Ctrl/Cmd+Z undoes edits. Hold Alt while dragging to ignore Snap. Trim edits keep your original audio intact; Reset clip restores it. Save project includes all four audio files and settings in one .mixproj file. Open project restores them. Save before reloading the page.</p></details>
+<details class="help"><summary>A few handy shortcuts</summary><p>Select a clip, then use ← / → to nudge. Hold Shift for 10× the nudge. Space plays or pauses. Ctrl/Cmd+Z undoes edits. Hold Alt while dragging to ignore Snap. Trim edits keep your original audio intact; Reset clip restores it. Save project includes all 12 audio files and settings in one .mixproj file. Open project restores them. Save before reloading the page.</p></details>
 </main>
 <!-- The MP3 encoder is embedded below, so this file also works offline. -->
 <script id="mp3-encoder" type="text/plain">function lamejs(){function X(c){return new Int32Array(c)}function K(c){return new Float32Array(c)}function ca(c){if(1==c.length)return K(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(ca(c));return n}function Ia(c){if(1==c.length)return X(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(Ia(c));return n}function dc(c){if(1==c.length)return new Int16Array(c[0]);var k=c[0];c=c.slice(1);for(var n=[],u=0;u<k;u++)n.push(dc(c));return n}function Ob(c){if(1==c.length)return Array(c[0]);
@@ -398,20 +398,22 @@ if (isIOS) {
   document.documentElement.classList.add('ios');
   document.querySelector('meta[name="viewport"]').content = 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no';
 }
-const COLORS = ['#cde995', '#9fcce8', '#c5afe7', '#e8b99a'];
+const TRACK_COUNT = 12;
+const COLORS = ['#cde995', '#9fcce8', '#c5afe7', '#e8b99a', '#f0a6c0', '#8ed9c4', '#e8d17e', '#9db4f0', '#d6b68a', '#a6d8e5', '#d9a3e5', '#b7d5a3'];
 const MAX_POSITION = 3600;
-const tracks = Array.from({length: 4}, () => ({
+const createTrack = () => ({
   buffer: null, name: '', volume: 1, muted: false, solo: false,
   start: 0, trimStart: 0, trimEnd: 0, rate: 1, bpm: null,
   peaks: null, fileBlob: null, gain: null, source: null, loading: false
-}));
+});
+const tracks = Array.from({length: TRACK_COUNT}, createTrack);
 let ctx = null, playing = false, starting = false, offset = 0, startedAt = 0, total = 0;
 let exporting = false, scrubbing = false, resumeAfterScrub = false, worker = null;
-let downloadURL = null, exportBlob = null, exportFileName = 'four-track-mix.mp3';
+let downloadURL = null, exportBlob = null, exportFileName = '12-track-mix.mp3';
 let projectBpm = 120, selected = -1, pixelsPerSecond = 65, viewDuration = 12;
 let fitMode = true, drag = null, visualFrame = 0, undoStack = [], redoStack = [];
 let controlsCollapsed = false, pinch = null, timelineTap = null;
-let projectBusy = false, projectBlob = null, projectURL = null, projectFileName = 'four-track-project.mixproj';
+let projectBusy = false, projectBlob = null, projectURL = null, projectFileName = '12-track-project.mixproj';
 let lastSnap = '0.25', metronomeEnabled = false, clickTimer = null;
 const clickBuffers = {}, clickNodes = new Set();
 let playheadDrag = null;
@@ -486,7 +488,7 @@ function refresh() {
   $('playhead').setAttribute('aria-disabled', String(!available || busy));
   $('playhead').tabIndex = !available || busy ? -1 : 0;
   $('ruler').setAttribute('aria-disabled', String(!available || busy));
-  $('loaded-count').textContent = tracks.filter(t => t.buffer).length + ' / 4';
+  $('loaded-count').textContent = tracks.filter(t => t.buffer).length + ' / ' + TRACK_COUNT;
   $('undo').disabled = busy || !undoStack.length;
   $('redo').disabled = busy || !redoStack.length;
   $('project-bpm').disabled = busy;
@@ -966,7 +968,7 @@ tracks.forEach((track, i) => {
   row.id = 'row-' + i;
   row.style.setProperty('--track-color', COLORS[i]);
   row.innerHTML = `<div class="track-controls" id="controls-${i}">
-    <div class="track-top"><span class="track-number">0${i + 1}</span><span id="name-${i}" class="file-name">Track ${i + 1}</span>
+    <div class="track-top"><span class="track-number">${String(i + 1).padStart(2, '0')}</span><span id="name-${i}" class="file-name">Track ${i + 1}</span>
     <input id="file-${i}" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac,.aif,.aiff" hidden>
     <button class="upload" id="upload-${i}" aria-label="Add or replace audio for track ${i + 1}">+ Add</button></div>
     <div class="track-buttons"><button id="mute-${i}" class="toggle mute" aria-label="Mute track ${i + 1}" aria-pressed="false" disabled>Mute</button><button id="solo-${i}" class="toggle" aria-label="Solo track ${i + 1}" aria-pressed="false" disabled>Solo</button><button id="edit-${i}" class="toggle track-edit" aria-label="Edit track ${i + 1}" disabled>Edit</button></div>
@@ -1046,7 +1048,7 @@ async function loadFile(i, file, input) {
     clearDownload(); clearProjectDownload();
     selectTrack(i);
     renderTimeline();
-    status(tracks.filter(t => t.buffer).length + ' of 4 tracks loaded. Drag a clip or use its settings to line it up.');
+    status(tracks.filter(t => t.buffer).length + ' of ' + TRACK_COUNT + ' tracks loaded. Drag a clip or use its settings to line it up.');
   } catch (error) {
     status('Could not open ' + file.name + '. Try a WAV, MP3, or M4A file supported by your browser.', true);
   } finally {
@@ -1252,7 +1254,7 @@ async function saveProject() {
     const savedTracks = [];
     for (let i = 0; i < tracks.length; i++) {
       const track = tracks[i];
-      status('Saving project audio… Track ' + (i + 1) + ' of 4');
+      status('Saving project audio… Track ' + (i + 1) + ' of ' + tracks.length);
       const saved = Object.fromEntries(editKeys.map(key => [key, track[key]]));
       saved.name = track.name;
       saved.audio = null;
@@ -1262,7 +1264,7 @@ async function saveProject() {
       }
       savedTracks.push(saved);
     }
-    const project = {format: 'four-track-mixer', version: 1, bpm: projectBpm, snap: $('snap').value, metronome: metronomeEnabled, tracks: savedTracks};
+    const project = {format: 'twelve-track-mixer', version: 1, bpm: projectBpm, snap: $('snap').value, metronome: metronomeEnabled, tracks: savedTracks};
     projectBlob = new Blob([JSON.stringify(project)], {type: 'application/json'});
     projectURL = URL.createObjectURL(projectBlob);
     $('download-project').href = projectURL;
@@ -1278,8 +1280,9 @@ async function saveProject() {
   } finally { projectBusy = false; refresh(); }
 }
 function validateProject(project) {
-  if (!project || project.format !== 'four-track-mixer' || project.version !== 1 || !Array.isArray(project.tracks) || project.tracks.length !== 4) {
-    throw Error('Choose a Four Track Mixer project (.mixproj).');
+  const expectedTracks = project?.format === 'four-track-mixer' ? 4 : project?.format === 'twelve-track-mixer' ? TRACK_COUNT : 0;
+  if (!expectedTracks || project.version !== 1 || !Array.isArray(project.tracks) || project.tracks.length !== expectedTracks) {
+    throw Error('Choose a 12 Track Mixer project (.mixproj).');
   }
   const number = (value, min, max, label) => {
     if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max) throw Error('Invalid project ' + label + '.');
@@ -1317,7 +1320,7 @@ async function openProject(file) {
       const {audio, ...settings} = savedTracks[i];
       let buffer = null, peaks = null, fileBlob = null;
       if (audio !== null) {
-        status('Opening project audio… Track ' + (i + 1) + ' of 4');
+        status('Opening project audio… Track ' + (i + 1) + ' of ' + savedTracks.length);
         const binary = atob(audio.base64), bytes = new Uint8Array(binary.length);
         for (let j = 0; j < binary.length; j++) bytes[j] = binary.charCodeAt(j);
         fileBlob = new Blob([bytes], {type: audio.type});
@@ -1330,7 +1333,8 @@ async function openProject(file) {
       loaded.push({...settings, buffer, peaks, fileBlob, gain: null, source: null, loading: false});
     }
     stopSources();
-    loaded.forEach((track, i) => Object.assign(tracks[i], track));
+    // Opening an older four-track project also clears lanes 5–12.
+    tracks.forEach((track, i) => Object.assign(track, loaded[i] || createTrack()));
     projectBpm = project.bpm;
     $('project-bpm').value = projectBpm;
     $('snap').value = project.snap;
@@ -1534,7 +1538,7 @@ $('export').onclick = async () => {
     const result = await encode(mixed);
     exportBlob = result.blob;
     if (!exportBlob.size) throw Error('The MP3 was empty. Please try exporting again.');
-    exportFileName = 'four-track-mix.mp3';
+    exportFileName = '12-track-mix.mp3';
     downloadURL = URL.createObjectURL(exportBlob);
     $('download').href = downloadURL;
     $('download').download = exportFileName;
